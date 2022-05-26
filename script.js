@@ -1,26 +1,27 @@
 /**
  * Données initiales du jeu
  */
-
-/** Chargement et positionnement du logo Game-Dev.Ninja */
-let logo = {
-    image: new Image(),
+const playerLeftPad = {
     x: 0,
-    y: 0
+    y: 0,
+    width: 25,
+    height: 100
 }
-logo.image.onload = function() {
-    logo.x = (canvas.width - logo.image.naturalWidth) / 2
-    logo.y = (canvas.height - logo.image.naturalHeight) / 2
-}
-logo.image.src = './assets/images/logo.png'
-/** Fin du chargement et positionnement du logo Game-Dev.Ninja */
 
+const screen = {
+    width: 0,
+    height: 0
+}
 
 /**
  * Exécutée une seule fois, au chargement
  */
 function LoadGame(canvas, context) {
+    screen.width = canvas.width
+    screen.height = canvas.height
 
+    playerLeftPad.x = 10
+    playerLeftPad.y = screen.height / 2 - playerLeftPad.height / 2
 }
 
 /**
@@ -34,6 +35,5 @@ function UpdateGame(deltaTime) {
  * Exécutée perpétuellement pour dessiner la frame actuelle
  */
 function DrawGame(context) {
-    // Affichage du logo Game-Dev.Ninja
-    context.drawImage(logo.image, 0, 0, logo.image.naturalWidth, logo.image.naturalHeight, logo.x, logo.y, logo.image.naturalWidth, logo.image.naturalHeight)
+    context.fillRect(playerLeftPad.x, playerLeftPad.y, playerLeftPad.width, playerLeftPad.height)
 }
