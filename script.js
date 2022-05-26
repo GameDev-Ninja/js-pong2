@@ -48,7 +48,18 @@ function LoadGame(canvas, context) {
  * Exécutée perpétuellement pour mettre à jour les données
  */
 function UpdateGame(deltaTime) {
-
+    if (isKeyDown('ArrowUp')) {
+        playerRightPad.y = playerRightPad.y - 2
+    }
+    if (isKeyDown('ArrowDown')) {
+        playerRightPad.y = playerRightPad.y + 2
+    }
+    if (isKeyDown('KeyW')) {
+        playerLeftPad.y = playerLeftPad.y - 2
+    }
+    if (isKeyDown('KeyS')) {
+        playerLeftPad.y = playerLeftPad.y + 2
+    }
 }
 
 /**
