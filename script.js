@@ -23,6 +23,8 @@ const screen = {
 const ball = {
     x: 0,
     y: 0,
+    vx: 0,
+    vy: 0,
     width: 16,
     height: 16
 }
@@ -42,6 +44,9 @@ function LoadGame(canvas, context) {
 
     ball.x = screen.width / 2 - ball.width / 2
     ball.y = screen.height / 2 - ball.height / 2
+
+    ball.vx = 2
+    ball.vy = -2
 }
 
 /**
@@ -59,6 +64,13 @@ function UpdateGame(deltaTime) {
     }
     if (isKeyDown('KeyS')) {
         playerLeftPad.y = playerLeftPad.y + 2
+    }
+
+    ball.x = ball.x + ball.vx
+    ball.y = ball.y + ball.vy
+
+    if (ball.y + ball.height >= screen.height || ball.y <= 0) {
+        ball.vy = -ball.vy
     }
 }
 
