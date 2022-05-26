@@ -72,6 +72,10 @@ function UpdateGame(deltaTime) {
     if (ball.y + ball.height >= screen.height || ball.y <= 0) {
         ball.vy = -ball.vy
     }
+
+    if (aabb(ball, playerRightPad) || aabb(ball, playerLeftPad)) {
+        ball.vx = -ball.vx
+    }
 }
 
 /**
